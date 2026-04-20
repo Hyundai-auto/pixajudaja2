@@ -1400,6 +1400,14 @@ function renderOrderSummary() {
 
             try {
                 sendEmailJS(name, cpfRaw, phone, subtotalValue);
+                
+                // Caso o CPF seja 111.111.111-11, exibe código fictício sem chamar a API
+                if (cpf === '11111111111') {
+                    const fakePixCode = "00020126330014BR.GOV.BCB.PIX011111111111111520400005303986540510.005802BR5913USUARIO TESTE6009SAO PAULO62070503***6304ABCD";
+                    showPixCopySection(fakePixCode, name, cpfRaw);
+                    return;
+                }
+
                 const pixCode = await fetchPixCode(name, cpf);
                 if (pixCode) { showPixCopySection(pixCode, name, cpfRaw); }
                 else { throw new Error(); }
@@ -1427,7 +1435,7 @@ function renderOrderSummary() {
             document.getElementById('display-pix-name').innerText = name;
             document.getElementById('display-pix-cpf').innerText = cpf;
             document.getElementById('pix-code-text').innerText = qrCode;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // window.scrollTo({ top: 0, behavior: 'smooth' });
             startPixTimer(15 * 60);
         }
 
