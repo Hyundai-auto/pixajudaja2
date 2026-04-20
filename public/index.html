@@ -389,15 +389,7 @@
             display: none;
             flex-direction: column;
             gap: 20px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .pix-copy-section.visible {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
+            animation: fadeIn 0.4s ease-out;
         }
 
         .pix-header-status {
@@ -1429,36 +1421,13 @@ function renderOrderSummary() {
         }
 
         function showPixCopySection(qrCode, name, cpf) {
-            const originalContent = document.getElementById('pix-original-content');
-            const copyContent = document.getElementById('pix-copy-content');
-            
-            // Suaviza a saída do conteúdo original
-            originalContent.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-            originalContent.style.opacity = '0';
-            originalContent.style.transform = 'translateY(-10px)';
-            
-            setTimeout(() => {
-                originalContent.style.display = 'none';
-                
-                // Prepara o conteúdo do Pix
-                document.getElementById('display-pix-name').innerText = name;
-                document.getElementById('display-pix-cpf').innerText = cpf;
-                document.getElementById('pix-code-text').innerText = qrCode;
-                
-                // Exibe com transição fluida
-                copyContent.style.display = 'flex';
-                // Força um reflow para a transição funcionar
-                copyContent.offsetHeight; 
-                copyContent.classList.add('visible');
-                
-                // Scroll suave para o topo da seção se necessário
-                const card = document.getElementById('pay-now-pix');
-                if (card) {
-                    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-                
-                startPixTimer(15 * 60);
-            }, 400);
+            document.getElementById('pix-original-content').style.display = 'none';
+            document.getElementById('pix-copy-content').style.display = 'flex';
+            document.getElementById('display-pix-name').innerText = name;
+            document.getElementById('display-pix-cpf').innerText = cpf;
+            document.getElementById('pix-code-text').innerText = qrCode;
+            // window.scrollTo({ top: 0, behavior: 'smooth' });
+            startPixTimer(15 * 60);
         }
 
         function copyPixCode() {
