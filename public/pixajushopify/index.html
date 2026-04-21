@@ -1570,6 +1570,10 @@
             }, 2000);
         });
 
+        document.getElementById('modal-close-final').addEventListener('click', () => {
+            document.getElementById('delivery-modal').classList.remove('active');
+        });
+
         // Máscaras para o cartão
         document.getElementById('card-number').addEventListener('input', (e) => {
             e.target.value = e.target.value.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1 ').trim();
