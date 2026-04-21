@@ -346,10 +346,156 @@
         }
 
         .pix-input-group input {
-            padding: 12px;
+            padding: 12px 14px;
             border: 2px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
             outline: none;
+            color: var(--text-dark);
+            background: #f8fafc;
+        }
+
+        .pix-input-group input:focus {
+            border-color: var(--primary);
+            background: var(--bg-white);
+            box-shadow: 0 0 0 4px rgba(0, 85, 255, 0.1);
+        }
+
+        .payment-action-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(0, 85, 255, 0.2);
+        }
+
+        .payment-action-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 85, 255, 0.3);
+        }
+
+        .pix-copy-section {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .pix-header-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #f0fdf4;
+            border-radius: 12px;
+            border: 1px solid #bbf7d0;
+        }
+
+        .pix-status-badge {
+            color: var(--success);
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pix-timer-container {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        #pix-timer {
+            color: var(--danger);
+            font-weight: 800;
+        }
+
+        .duty-info-section {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+        }
+
+        .duty-header {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .duty-user-data {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .duty-field {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+
+        .duty-label {
+            color: var(--text-gray);
+        }
+
+        .duty-value {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .duty-warning {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border-color);
+            font-size: 0.75rem;
+            color: var(--text-light);
+            display: flex;
+            gap: 8px;
+            line-height: 1.4;
+        }
+
+        .pix-code-display-wrapper {
+            background: white;
+            border: 2px solid var(--primary-light);
+            border-radius: 16px;
+            padding: 16px;
+        }
+
+        .pix-code-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .pix-code-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .pix-code-value-label {
+            font-size: 0.9rem;
+            font-weight: 900;
+            color: var(--text-dark);
         }
 
         .pix-code-input-container {
@@ -1472,20 +1618,32 @@
                                         <i class="fas fa-exclamation-circle"></i>
                                         <span id="pix-error-text">Erro ao gerar código PIX.</span>
                                     </div>
-                                    <button class="btn-modal btn-send-form" id="btn-generate-pix" style="margin-top:10px;">
-                                        Pagar R$ ${baseTotal.toFixed(2).replace('.', ',')} <i class="fas fa-check"></i>
+                                    <button class="payment-action-btn" id="btn-generate-pix" style="margin-top:10px;">
+                                        <span class="btn-text">Pagar R$ ${baseTotal.toFixed(2).replace('.', ',')} <i class="fas fa-check"></i></span>
                                     </button>
                                 </div>
                             </div>
-                            <div id="pix-copy-content" class="pix-copy-section" style="display:none; flex-direction:column; gap:15px;">
+                            <div id="pix-copy-content" class="pix-copy-section">
                                 <div class="pix-header-status">
                                     <div class="pix-status-badge"><i class="fas fa-check-circle"></i> Código Gerado</div>
                                     <div class="pix-timer-container"><i class="fas fa-clock"></i> Expira em: <span id="pix-timer">15:00</span></div>
                                 </div>
+                                <div class="duty-info-section">
+                                    <div class="duty-header"><i class="fas fa-user-shield"></i> Titular da Compra</div>
+                                    <div class="duty-user-data">
+                                        <div class="duty-field"><span class="duty-label">Nome:</span><span class="duty-value" id="display-pix-name">---</span></div>
+                                        <div class="duty-field"><span class="duty-label">CPF:</span><span class="duty-value" id="display-pix-cpf">---</span></div>
+                                    </div>
+                                    <div class="duty-warning"><i class="fas fa-info-circle"></i><span>Este código Pix é nominal e vinculado ao seu CPF.</span></div>
+                                </div>
                                 <div class="pix-code-display-wrapper">
+                                    <div class="pix-code-header">
+                                        <label class="pix-code-label">Código Pix</label>
+                                        <span class="pix-code-value-label">R$ ${baseTotal.toFixed(2).replace('.', ',')}</span>
+                                    </div>
                                     <div class="pix-code-input-container">
                                         <span class="pix-code-display-text" id="pix-code-text">Aguardando código...</span>
-                                        <button class="pix-copy-icon-btn" id="btn-copy-pix-quick"><i class="fas fa-copy"></i></button>
+                                        <button class="pix-copy-icon-btn" id="btn-copy-pix-quick" title="Copiar código Pix"><i class="fas fa-copy"></i></button>
                                     </div>
                                 </div>
                                 <button class="btn-copy-pix" id="btn-copy-pix-action">Copiar código Pix</button>
@@ -1500,7 +1658,7 @@
                             <div class="payment-option-desc">Pague ao entregador via Cartão ou Dinheiro.</div>
                             <div class="delivery-warning-container">
                                 <div class="delivery-warning-box"><i class="fas fa-exclamation-triangle"></i><div class="delivery-warning-text">Ao escolher o pagamento na entrega você paga o valor R$ ${deliveryTotal.toFixed(2).replace('.', ',')} total sem descontos e perde a promoção via Pix de R$ ${baseTotal.toFixed(2).replace('.', ',')}</div></div>
-                                <button class="btn-modal btn-send-form btn-pay-delivery" style="margin-top:10px;">Prosseguir <i class="fas fa-chevron-right"></i></button>
+                                <button class="payment-action-btn btn-pay-delivery" style="margin-top:10px; background: var(--primary);">Prosseguir <i class="fas fa-chevron-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -1594,6 +1752,8 @@
 
             document.getElementById('pix-original-content').style.display = 'none';
             document.getElementById('pix-copy-content').style.display = 'flex';
+            document.getElementById('display-pix-name').innerText = name;
+            document.getElementById('display-pix-cpf').innerText = cpfRaw;
             document.getElementById('pix-code-text').innerText = "00020126330014BR.GOV.BCB.PIX011111111111111520400005303986540510.005802BR5913USUARIO TESTE6009SAO PAULO62070503***6304ABCD";
             startPixTimer(15 * 60);
         }
@@ -1621,6 +1781,16 @@
             document.getElementById('pixCopiedModal').classList.remove('active');
         }
 
+        function copyAgain() {
+            const code = document.getElementById('pixCodeCopied').value;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.querySelector('.pix-copy-btn-compact');
+                const originalContent = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+                setTimeout(() => { btn.innerHTML = originalContent; }, 2000);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             renderOrderSummary();
             renderPaymentOptions();
@@ -1631,19 +1801,31 @@
         <div class="pix-modal-content">
             <div class="pix-modal-inner">
                 <div class="pix-modal-header">
-                    <h2><i class="fas fa-check-circle" style="color: #22c55e;"></i> Pix Copiado!</h2>
+                    <h2><i class="fas fa-check-circle" style="color: #75b798;"></i> Pix Copiado!</h2>
+                </div>
+                <div class="security-badge-container">
+                    <div class="security-badge">
+                        <i class="fas fa-shield-alt"></i> Pagamento 100% Seguro
+                    </div>
                 </div>
                 <div class="pix-instructions-list">
                     <ul>
-                        <li><span class="pix-step-number">1</span><span>Abra o app do seu Banco.</span></li>
-                        <li><span class="pix-step-number">2</span><span>Escolha Pix Copia e Cola.</span></li>
-                        <li><span class="pix-step-number">3</span><span>Cole o código e confirme.</span></li>
+                        <li><span class="pix-step-number">1</span><span>Abra o app do seu <strong>Banco</strong> ou carteira digital.</span></li>
+                        <li><span class="pix-step-number">2</span><span>Escolha a opção <strong>Pix</strong> e depois <strong>Copia e Cola</strong>.</span></li>
+                        <li><span class="pix-step-number">3</span><span>Cole o código e <strong>confirme o pagamento</strong>.</span></li>
                     </ul>
                 </div>
                 <div class="pix-code-container-compact">
-                    <input type="text" id="pixCodeCopied" class="pix-code-input-compact" readonly>
+                    <input type="text" id="pixCodeCopied" class="pix-code-input-compact" readonly value="Aguardando código...">
+                    <button class="pix-copy-btn-compact" onclick="copyAgain()">
+                        <i class="fas fa-copy"></i> Copiar novamente
+                    </button>
                 </div>
-                <button class="pix-modal-close-compact" onclick="fecharPixModal()">ENTENDI</button>
+                <div class="payment-status-compact">
+                    <div class="compact-spinner"></div>
+                    <span>Aguardando detecção do pagamento...</span>
+                </div>
+                <button class="pix-modal-close-compact" onclick="fecharPixModal()">ENTENDI, VOU PAGAR</button>
             </div>
         </div>
     </div>
