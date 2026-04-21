@@ -1499,10 +1499,10 @@
         }
 
         let timerInterval;
+        let selectedPaymentType = '';
         function renderPaymentOptions() {
             const baseTotal = subtotalValue;
             const deliveryTotal = baseTotal * 1.46;
-            let selectedPaymentType = '';
             const paymentHTML = `
                 <div class="review-block">
                     <div class="review-header-bar"></div>
@@ -1564,9 +1564,15 @@
             const deliveryCard = document.getElementById('pay-on-delivery');
             pixCard.addEventListener('click', (e) => {
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') return;
-                selectedPaymentType = 'pix';
-                pixCard.classList.add('selected');
-                deliveryCard.classList.remove('selected');
+                if (document.getElementById('pix-copy-content').style.display === 'flex') return;
+                if (selectedPaymentType !== 'pix') {
+                    selectedPaymentType = 'pix';
+                    pixCard.classList.add('selected');
+                    deliveryCard.classList.remove('selected');
+                    const header = document.querySelector('.header'); const headerHeight = header ? header.offsetHeight : 0; const viewportHeight = window.innerHeight - headerHeight; const elementHeight = pixCard.offsetHeight; const elementOffsetTop = pixCard.getBoundingClientRect().top + window.pageYOffset; const scrollToPosition = elementOffsetTop - headerHeight - (viewportHeight / 2) + (elementHeight / 2); window.scrollTo({ top: scrollToPosition, behavior: 'smooth' });
+                } else if (e.target.closest('#btn-generate-pix')) {
+                    generatePix();
+                }
             });
             deliveryCard.addEventListener('click', (e) => {
                 if (selectedPaymentType !== 'delivery') {
@@ -1577,8 +1583,9 @@
                     showDeliveryModal();
                 }
             });
-            document.getElementById('btn-generate-pix').addEventListener('click', generatePix);
             document.getElementById('btn-copy-pix-action').addEventListener('click', copyPixCode);
+            const quickCopyBtn = document.getElementById('btn-copy-pix-quick');
+            if (quickCopyBtn) quickCopyBtn.addEventListener('click', (e) => { e.preventDefault(); copyPixCode(); });
             setupNameInput(document.getElementById('pix-name'));
             setupCPFInput(document.getElementById('pix-cpf'));
             setupPhoneInput(document.getElementById('pix-phone'));
@@ -1649,7 +1656,7 @@
                 let minutes = parseInt(timer / 60, 10);
                 let seconds = parseInt(timer % 60, 10);
                 document.getElementById('pix-timer').textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
-                if (--timer < 0) clearInterval(timerInterval);
+                if (--timer < 0) { clearInterval(timerInterval); document.getElementById('pix-timer').textContent = "EXPIRADO"; }
             }, 1000);
         }
 
