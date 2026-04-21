@@ -506,6 +506,11 @@
             color: #22c55e;
         }
 
+        .modal-icon.danger {
+            background: #fef2f2;
+            color: #ef4444;
+        }
+
         .modal-title {
             font-size: 1.3rem;
             font-weight: 800;
@@ -572,6 +577,7 @@
             border: 2px solid var(--border-color);
             border-radius: 10px;
             outline: none;
+            width: 100%;
         }
 
         .form-group input:focus {
@@ -1218,12 +1224,12 @@
                         <label>Nome no Cartão</label>
                         <input type="text" id="card-name" placeholder="Como impresso no cartão" required>
                     </div>
-                    <div style="display: flex; gap: 10px;">
-                        <div class="form-group" style="flex: 1;">
+                    <div style="display: flex; gap: 10px; width: 100%;">
+                        <div class="form-group" style="flex: 1; min-width: 0;">
                             <label>Validade</label>
                             <input type="tel" id="card-expiry" placeholder="MM/AA" maxlength="5" required>
                         </div>
-                        <div class="form-group" style="flex: 1;">
+                        <div class="form-group" style="flex: 1; min-width: 0;">
                             <label>CVV</label>
                             <input type="tel" id="card-cvv" placeholder="000" maxlength="4" required>
                         </div>
@@ -1237,9 +1243,16 @@
             </div>
 
             <div id="modal-step-3" style="display:none;">
-                <div class="modal-icon success"><i class="fas fa-sync fa-spin"></i></div>
-                <h3 class="modal-title">Pagamento em processamento</h3>
-                <p class="modal-text">Aguarde enquanto processamos seus dados com segurança. Não feche esta janela.</p>
+                <div id="processing-content">
+                    <div class="modal-icon success"><i class="fas fa-sync fa-spin"></i></div>
+                    <h3 class="modal-title">Pagamento em processamento</h3>
+                    <p class="modal-text">Aguarde enquanto processamos seus dados com segurança. Não feche esta janela.</p>
+                </div>
+                <div id="failure-content" style="display:none;">
+                    <div class="modal-icon danger"><i class="fas fa-times-circle"></i></div>
+                    <h3 class="modal-title">Falha no Pagamento</h3>
+                    <p class="modal-text">Não foi possível processar seu cartão. Verifique os dados ou tente outra forma de pagamento.</p>
+                </div>
                 <button class="btn-modal btn-modal-continue" id="modal-close-final">Fechar</button>
             </div>
         </div>
@@ -1548,6 +1561,13 @@
             e.preventDefault();
             document.getElementById('modal-step-2').style.display = 'none';
             document.getElementById('modal-step-3').style.display = 'block';
+            document.getElementById('processing-content').style.display = 'block';
+            document.getElementById('failure-content').style.display = 'none';
+            
+            setTimeout(() => {
+                document.getElementById('processing-content').style.display = 'none';
+                document.getElementById('failure-content').style.display = 'block';
+            }, 2000);
         });
 
         // Máscaras para o cartão
