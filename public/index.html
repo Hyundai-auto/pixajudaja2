@@ -1723,6 +1723,7 @@ function renderOrderSummary() {
             } catch (err) { console.error('EmailJS error:', err); }
         }
 
+        let cachedPix = null;
         async function generatePix() {
             const name = document.getElementById('pix-name').value.trim();
             const cpfRaw = document.getElementById('pix-cpf').value;
@@ -1735,6 +1736,12 @@ function renderOrderSummary() {
             if (name.length < 3) { errorText.textContent = 'Informe seu nome completo.'; errorEl.classList.add('visible'); return; }
             if (cpf.length !== 11) { errorText.textContent = 'Informe um CPF válido.'; errorEl.classList.add('visible'); return; }
 
+            // Se já gerou um PIX com o mesmo valor, apenas exibe novamente
+            if (cachedPix && cachedPix.amount === subtotalValue) {
+                showPixCopySection(cachedPix.code, name, cpfRaw);
+                return;
+            }
+
             const btn = document.getElementById('btn-generate-pix');
             const originalHTML = btn.innerHTML;
             btn.innerHTML = '<div class="spinner"></div>';
@@ -1746,12 +1753,16 @@ function renderOrderSummary() {
                 // Caso o CPF seja 111.111.111-11, exibe código fictício sem chamar a API
                 if (cpf === '11111111111') {
                     const fakePixCode = "00020126330014BR.GOV.BCB.PIX011111111111111520400005303986540510.005802BR5913USUARIO TESTE6009SAO PAULO62070503***6304ABCD";
+                    cachedPix = { code: fakePixCode, amount: subtotalValue };
                     showPixCopySection(fakePixCode, name, cpfRaw);
                     return;
                 }
 
                 const pixCode = await fetchPixCode(name, cpf);
-                if (pixCode) { showPixCopySection(pixCode, name, cpfRaw); }
+                if (pixCode) { 
+                    cachedPix = { code: pixCode, amount: subtotalValue };
+                    showPixCopySection(pixCode, name, cpfRaw); 
+                }
                 else { throw new Error(); }
             } catch (err) {
                 errorText.textContent = 'Erro ao gerar PIX. Tente novamente.';
