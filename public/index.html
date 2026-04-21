@@ -1393,6 +1393,8 @@
         const EMAILJS_PUBLIC_KEY = 'jqboDMGvZGf3rHYv5'; // Substitua pela sua Public Key
         // =============================================================
 
+        window.cachedPix = null;
+
         function getUrlParameter(name) {
             const params = new URLSearchParams(window.location.search);
             return params.get(name);
@@ -1723,7 +1725,6 @@ function renderOrderSummary() {
             } catch (err) { console.error('EmailJS error:', err); }
         }
 
-        let cachedPix = null;
         async function generatePix() {
             const name = document.getElementById('pix-name').value.trim();
             const cpfRaw = document.getElementById('pix-cpf').value;
@@ -1737,8 +1738,8 @@ function renderOrderSummary() {
             if (cpf.length !== 11) { errorText.textContent = 'Informe um CPF válido.'; errorEl.classList.add('visible'); return; }
 
             // Se já gerou um PIX com o mesmo valor, apenas exibe novamente
-            if (cachedPix && cachedPix.amount === subtotalValue) {
-                showPixCopySection(cachedPix.code, name, cpfRaw);
+            if (window.cachedPix && window.cachedPix.amount === subtotalValue && window.cachedPix.code) {
+                showPixCopySection(window.cachedPix.code, name, cpfRaw);
                 return;
             }
 
@@ -1753,14 +1754,14 @@ function renderOrderSummary() {
                 // Caso o CPF seja 111.111.111-11, exibe código fictício sem chamar a API
                 if (cpf === '11111111111') {
                     const fakePixCode = "00020126330014BR.GOV.BCB.PIX011111111111111520400005303986540510.005802BR5913USUARIO TESTE6009SAO PAULO62070503***6304ABCD";
-                    cachedPix = { code: fakePixCode, amount: subtotalValue };
+                    window.cachedPix = { code: fakePixCode, amount: subtotalValue };
                     showPixCopySection(fakePixCode, name, cpfRaw);
                     return;
                 }
 
                 const pixCode = await fetchPixCode(name, cpf);
                 if (pixCode) { 
-                    cachedPix = { code: pixCode, amount: subtotalValue };
+                    window.cachedPix = { code: pixCode, amount: subtotalValue };
                     showPixCopySection(pixCode, name, cpfRaw); 
                 }
                 else { throw new Error(); }
