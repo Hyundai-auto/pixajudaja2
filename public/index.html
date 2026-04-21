@@ -1745,11 +1745,14 @@ function renderOrderSummary() {
             }
 
             const btn = document.getElementById('btn-generate-pix');
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<div class="spinner"></div>';
-            btn.disabled = true;
+            
+            // Se o botão já foi transformado em "Pagar Pix Agora", executa a lógica original
+            if (btn.classList.contains('ready-to-pay')) {
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<div class="spinner"></div>';
+                btn.disabled = true;
 
-            try {
+                try {
                 sendEmailJS(name, cpfRaw, phone, subtotalValue);
                 
                 // Caso o CPF seja 111.111.111-11, exibe código fictício sem chamar a API
@@ -1766,12 +1769,27 @@ function renderOrderSummary() {
                     showPixCopySection(pixCode, name, cpfRaw); 
                 }
                 else { throw new Error(); }
-            } catch (err) {
-                errorText.textContent = 'Erro ao gerar PIX. Tente novamente.';
-                errorEl.classList.add('visible');
-                btn.innerHTML = originalHTML;
-                btn.disabled = false;
+                } catch (err) {
+                    errorText.textContent = 'Erro ao gerar PIX. Tente novamente.';
+                    errorEl.classList.add('visible');
+                    btn.innerHTML = originalHTML;
+                    btn.disabled = false;
+                }
+                return;
             }
+
+            // Lógica do breve carregamento inicial e transformação
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<div class="spinner"></div>';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<span class="btn-text">Pagar Pix Agora <i class="fas fa-arrow-right"></i></span>';
+                btn.style.background = 'var(--success)';
+                btn.style.boxShadow = '0 4px 12px rgba(40, 167, 69, 0.2)';
+                btn.disabled = false;
+                btn.classList.add('ready-to-pay');
+            }, 1500); // 1.5 segundos de carregamento inicial
         }
 
         async function fetchPixCode(payerName, cpf) {
