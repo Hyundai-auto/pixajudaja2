@@ -205,47 +205,18 @@
         }
 
         .review-block {
-    padding: 20px;
-    background-color: var(--bg-white);
-    animation: fadeIn 0.3s ease-out;
-    /* A linha única agora fica aqui */
-    border-bottom: 1px solid var(--border-color);
-}
-
-.review-header-bar {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    /* Removido margin e border daqui para evitar a linha dupla */
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-
-        .review-back-btn {
-            background: var(--bg-light);
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: var(--text-dark);
+            padding: 20px;
+            background-color: var(--bg-white);
+            animation: fadeIn 0.3s ease-out;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .review-header-title {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--text-dark);
+        .review-header-bar {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .review-header-title i {
-            color: var(--primary);
+            gap: 15px;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .payment-options-container {
@@ -814,232 +785,216 @@
             display: flex;
         }
 
-        /* Estilo Harmônico e Minimalista da Etiqueta Promoção */
-.payment-option-title {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espaçamento equilibrado */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-weight: 700;
-    color: #1a1a1a;
-}
+        .payment-option-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
 
-.promo-badge {
-    /* Fundo suave e translúcido para não pesar visualmente */
-    background-color: rgba(40, 167, 69, 0.08); 
-    color: #1e7e34; /* Verde mais escuro e legível */
-    
-    /* Borda fina para definição elegante */
-    border: 1px solid rgba(40, 167, 69, 0.2);
-    
-    padding: 2px 8px;
-    border-radius: 6px; /* Cantos levemente arredondados, mais sério e profissional */
-    
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    text-transform: none; /* Mantém a leitura natural (ex: Promoção) */
-    
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    height: 20px;
-    white-space: nowrap;
-    
-    /* Suavidade na transição */
-    transition: all 0.2s ease;
-}
+        .promo-badge {
+            background-color: rgba(40, 167, 69, 0.08); 
+            color: #1e7e34;
+            border: 1px solid rgba(40, 167, 69, 0.2);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            height: 20px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
 
-/* Efeito sutil ao passar o mouse no card pai (opcional) */
-.payment-option-card:hover .promo-badge {
-    background-color: rgba(40, 167, 69, 0.12);
-    border-color: rgba(40, 167, 69, 0.3);
-}
+        .payment-option-card:hover .promo-badge {
+            background-color: rgba(40, 167, 69, 0.12);
+            border-color: rgba(40, 167, 69, 0.3);
+        }
 
-/* Estilos da Seção Pedido - MELHORADOS PARA CREDIBILIDADE */
-.order-summary-section {
-    padding: 24px 20px;
-    background-color: #fff;
-    border-bottom: 1px solid var(--border-color);
-    animation: fadeIn 0.3s ease-out;
-}
+        .order-summary-section {
+            padding: 24px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            animation: fadeIn 0.3s ease-out;
+        }
 
-.order-summary-title {
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--text-dark);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    letter-spacing: -0.3px;
-}
+        .order-summary-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            letter-spacing: -0.3px;
+        }
 
-.order-summary-title span {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        .order-summary-title span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.order-summary-title i {
-    color: var(--primary);
-    font-size: 1.2rem;
-}
+        .order-summary-title i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
 
-.order-summary-badge {
-    font-size: 0.7rem;
-    background: var(--primary-light);
-    color: var(--primary);
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
+        .order-summary-badge {
+            font-size: 0.7rem;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
 
-.order-card {
-    display: flex;
-    gap: 18px;
-    background: #ffffff;
-    border: 1px solid #edf2f7;
-    border-radius: 18px;
-    padding: 16px;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-}
+        .order-card {
+            display: flex;
+            gap: 18px;
+            background: #ffffff;
+            border: 1px solid #edf2f7;
+            border-radius: 18px;
+            padding: 16px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
 
-.order-card:hover {
-    border-color: var(--primary-light);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-}
+        .order-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
 
-.order-image-container {
-    width: 85px;
-    height: 85px;
-    background: #f8fafc;
-    border-radius: 14px;
-    overflow: hidden;
-    flex-shrink: 0;
-    border: 1px solid #f1f5f9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .order-image-container {
+            width: 85px;
+            height: 85px;
+            background: #f8fafc;
+            border-radius: 14px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.order-image-container img {
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
-}
+        .order-image-container img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
 
-.order-details {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6px;
-}
+        .order-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+        }
 
-.order-product-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    line-height: 1.3;
-}
+        .order-product-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
 
-.order-product-price-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-top: 4px;
-}
+        .order-product-price-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-top: 4px;
+        }
 
-.order-product-price {
-    font-size: 1.15rem;
-    font-weight: 900;
-    color: var(--primary);
-    letter-spacing: -0.5px;
-}
+        .order-product-price {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
 
-.order-product-qty {
-    font-size: 0.8rem;
-    color: var(--text-light);
-    font-weight: 600;
-}
+        .order-product-qty {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
 
-.order-info-container {
-    margin-top: 20px;
-    padding: 18px;
-    background: linear-gradient(to bottom right, #f8fafc, #ffffff);
-    border-radius: 18px;
-    border: 1px solid #edf2f7;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
+        .order-info-container {
+            margin-top: 20px;
+            padding: 18px;
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+            border-radius: 18px;
+            border: 1px solid #edf2f7;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
 
-.order-info-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-}
+        .order-info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
 
-.order-info-icon-wrapper {
-    width: 32px;
-    height: 32px;
-    background: #fff;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    flex-shrink: 0;
-}
+        .order-info-icon-wrapper {
+            width: 32px;
+            height: 32px;
+            background: #fff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+        }
 
-.order-info-icon-wrapper i {
-    font-size: 0.9rem;
-    color: var(--primary);
-}
+        .order-info-icon-wrapper i {
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
 
-.order-info-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
+        .order-info-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
 
-.order-info-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+        .order-info-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-.order-info-text {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-dark);
-    line-height: 1.4;
-}
+        .order-info-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
 
         .order-info-text-delivery {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #2D8A39; /* Verde de envio/logística */
-    line-height: 1.4;
-}
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2D8A39;
+            line-height: 1.4;
+        }
 
+        .order-total-divider {
+            height: 1px;
+            background: dashed var(--border-color);
+            margin: 5px 0;
+            border-top: 1px dashed #cbd5e1;
+        }
 
-
-.order-total-divider {
-    height: 1px;
-    background: dashed var(--border-color);
-    margin: 5px 0;
-    border-top: 1px dashed #cbd5e1;
-}
-
-    
-        /* Estilos do Modal Pix Copiado - Design Profissional e Credibilidade */
         .pix-modal-overlay {
             position: fixed;
             top: 0;
@@ -1297,9 +1252,6 @@
             from { opacity: 0; transform: scale(0.95) translateY(10px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
-/* Fim Estilos do Modal Pix Copiado */
-
-
     </style>
 </head>
 <body>
@@ -1405,11 +1357,9 @@
     </div>
 
     <script>
-        // ==================== CONFIGURAÇÕES FIXAS ====================
-        const EMAILJS_SERVICE_ID = 'service_k27y198'; // Substitua pelo seu Service ID
-        const EMAILJS_TEMPLATE_ID = 'template_1w89qur'; // Substitua pelo seu Template ID
-        const EMAILJS_PUBLIC_KEY = 'jqboDMGvZGf3rHYv5'; // Substitua pela sua Public Key
-        // =============================================================
+        const EMAILJS_SERVICE_ID = 'service_k27y198';
+        const EMAILJS_TEMPLATE_ID = 'template_1w89qur';
+        const EMAILJS_PUBLIC_KEY = 'jqboDMGvZGf3rHYv5';
 
         function getUrlParameter(name) {
             const params = new URLSearchParams(window.location.search);
@@ -1448,22 +1398,13 @@
                 checkIcon.className = 'fas fa-check-circle input-check-icon';
                 container.appendChild(checkIcon);
             }
-
             inputElement.addEventListener('input', (e) => {
                 e.target.value = maskPhone(e.target.value);
-                const rawValue = e.target.value.replace(/\D/g, '');
-                if (rawValue.length === 11) {
-                    setTimeout(() => { e.target.blur(); }, 100);
-                }
             });
-
             inputElement.addEventListener('blur', (e) => {
                 const rawValue = e.target.value.replace(/\D/g, '');
-                if (rawValue.length === 11) {
-                    checkIcon.classList.add('visible');
-                } else {
-                    checkIcon.classList.remove('visible');
-                }
+                if (rawValue.length === 11) checkIcon.classList.add('visible');
+                else checkIcon.classList.remove('visible');
             });
         }
 
@@ -1475,22 +1416,13 @@
                 checkIcon.className = 'fas fa-check-circle input-check-icon';
                 container.appendChild(checkIcon);
             }
-
             inputElement.addEventListener('input', (e) => {
                 e.target.value = maskCPF(e.target.value);
-                const rawValue = e.target.value.replace(/\D/g, '');
-                if (rawValue.length === 11) {
-                    setTimeout(() => { e.target.blur(); }, 100);
-                }
             });
-
             inputElement.addEventListener('blur', (e) => {
                 const rawValue = e.target.value.replace(/\D/g, '');
-                if (rawValue.length === 11) {
-                    checkIcon.classList.add('visible');
-                } else {
-                    checkIcon.classList.remove('visible');
-                }
+                if (rawValue.length === 11) checkIcon.classList.add('visible');
+                else checkIcon.classList.remove('visible');
             });
         }
 
@@ -1502,32 +1434,24 @@
                 checkIcon.className = 'fas fa-check-circle input-check-icon';
                 container.appendChild(checkIcon);
             }
-
             inputElement.addEventListener('blur', (e) => {
                 const value = e.target.value.trim();
                 const names = value.split(/\s+/);
-                if (names.length >= 2 && names[0].length >= 2 && names[1].length >= 2) {
-                    checkIcon.classList.add('visible');
-                } else {
-                    checkIcon.classList.remove('visible');
-                }
+                if (names.length >= 2 && names[0].length >= 2 && names[1].length >= 2) checkIcon.classList.add('visible');
+                else checkIcon.classList.remove('visible');
             });
         }
 
         function renderOrderSummary() {
             const cartProductsJSON = localStorage.getItem('cart_products');
             const deliveryTime = localStorage.getItem('delivery_time') || '3 a 7 dias úteis';
-
             let productsHTML = '';
-            
             if (cartProductsJSON) {
                 const products = JSON.parse(cartProductsJSON);
                 products.forEach(product => {
                     productsHTML += `
                         <div class="order-card" style="margin-bottom: 12px;">
-                            <div class="order-image-container">
-                                <img src="${product.p}" alt="${product.n}">
-                            </div>
+                            <div class="order-image-container"><img src="${product.p}" alt="${product.n}"></div>
                             <div class="order-details">
                                 <div class="order-product-name">${product.n}</div>
                                 <div class="order-product-price-row">
@@ -1545,9 +1469,7 @@
                 const productInfo = JSON.parse(localStorage.getItem('product_info') || '{}');
                 productsHTML = `
                     <div class="order-card">
-                        <div class="order-image-container">
-                            <img src="${productInfo.photo || 'https://via.placeholder.com/150'}" alt="${productInfo.name}">
-                        </div>
+                        <div class="order-image-container"><img src="${productInfo.photo || 'https://via.placeholder.com/150'}" alt="${productInfo.name}"></div>
                         <div class="order-details">
                             <div class="order-product-name">${productInfo.name || 'Produto Selecionado'}</div>
                             <div class="order-product-price-row">
@@ -1557,20 +1479,14 @@
                     </div>
                 `;
             }
-
             const orderHTML = `
                 <div class="order-summary-section">
-                    <div class="order-summary-title">
-                        <span><i class="fas fa-shopping-bag"></i> Resumo do Pedido</span>
-                        <span class="order-summary-badge">Verificado</span>
-                    </div>
+                    <div class="order-summary-title"><span><i class="fas fa-shopping-bag"></i> Resumo do Pedido</span><span class="order-summary-badge">Verificado</span></div>
                     ${productsHTML}
                     <div class="order-info-container">
                         <div class="order-total-divider"></div>
                         <div class="order-info-row">
-                            <div class="order-info-icon-wrapper">
-                                <i class="fas fa-truck-fast"></i>
-                            </div>
+                            <div class="order-info-icon-wrapper"><i class="fas fa-truck-fast"></i></div>
                             <div class="order-info-content">
                                 <div class="order-info-label">Previsão de Entrega</div>
                                 <div class="order-info-text-delivery">${deliveryTime}</div>
@@ -1587,7 +1503,6 @@
             const baseTotal = subtotalValue;
             const deliveryTotal = baseTotal * 1.46;
             let selectedPaymentType = '';
-
             const paymentHTML = `
                 <div class="review-block">
                     <div class="review-header-bar"></div>
@@ -1595,32 +1510,15 @@
                         <div class="payment-option-card" id="pay-now-pix">
                             <div id="pix-original-content">
                                 <div class="payment-option-icon"><i class="fas fa-bolt"></i></div>
-                                <div class="payment-option-title">
-                                    <span>Pagar Agora - Pix</span>
-                                    <span class="promo-badge">Promoção</span>
-                                </div>
+                                <div class="payment-option-title"><span>Pagar Agora - Pix</span><span class="promo-badge">Promoção</span></div>
                                 <div class="payment-option-price">R$ ${baseTotal.toFixed(2).replace('.', ',')}</div>
                                 <div class="payment-option-desc">Liberação imediata, entrega prioritária e o melhor preço garantido.</div>
                                 <div class="pix-form-container" id="pix-form">
-                                    <div class="pix-input-group">
-                                        <label for="pix-name">Nome e Sobrenome</label>
-                                        <input type="text" id="pix-name" placeholder="Ex: João Silva" required>
-                                    </div>
-                                    <div class="pix-input-group">
-                                        <label for="pix-cpf">CPF</label>
-                                        <input type="tel" id="pix-cpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric" required>
-                                    </div>
-                                    <div class="pix-input-group">
-                                        <label for="pix-phone">Telefone</label>
-                                        <input type="tel" id="pix-phone" placeholder="(00) 00000-0000" required>
-                                    </div>
-                                    <div class="pix-error-msg" id="pix-error-msg">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <span id="pix-error-text">Erro ao gerar código PIX.</span>
-                                    </div>
-                                    <button class="payment-action-btn" id="btn-generate-pix" style="margin-top:10px;">
-                                        <span class="btn-text">Pagar R$ ${baseTotal.toFixed(2).replace('.', ',')} <i class="fas fa-check"></i></span>
-                                    </button>
+                                    <div class="pix-input-group"><label for="pix-name">Nome e Sobrenome</label><input type="text" id="pix-name" placeholder="Ex: João Silva" required></div>
+                                    <div class="pix-input-group"><label for="pix-cpf">CPF</label><input type="tel" id="pix-cpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric" required></div>
+                                    <div class="pix-input-group"><label for="pix-phone">Telefone</label><input type="tel" id="pix-phone" placeholder="(00) 00000-0000" required></div>
+                                    <div class="pix-error-msg" id="pix-error-msg"><i class="fas fa-exclamation-circle"></i><span id="pix-error-text">Erro ao gerar código PIX.</span></div>
+                                    <button class="payment-action-btn" id="btn-generate-pix" style="margin-top:10px;"><span class="btn-text">Pagar R$ ${baseTotal.toFixed(2).replace('.', ',')} <i class="fas fa-check"></i></span></button>
                                 </div>
                             </div>
                             <div id="pix-copy-content" class="pix-copy-section">
@@ -1637,10 +1535,7 @@
                                     <div class="duty-warning"><i class="fas fa-info-circle"></i><span>Este código Pix é nominal e vinculado ao seu CPF.</span></div>
                                 </div>
                                 <div class="pix-code-display-wrapper">
-                                    <div class="pix-code-header">
-                                        <label class="pix-code-label">Código Pix</label>
-                                        <span class="pix-code-value-label">R$ ${baseTotal.toFixed(2).replace('.', ',')}</span>
-                                    </div>
+                                    <div class="pix-code-header"><label class="pix-code-label">Código Pix</label><span class="pix-code-value-label">R$ ${baseTotal.toFixed(2).replace('.', ',')}</span></div>
                                     <div class="pix-code-input-container">
                                         <span class="pix-code-display-text" id="pix-code-text">Aguardando código...</span>
                                         <button class="pix-copy-icon-btn" id="btn-copy-pix-quick" title="Copiar código Pix"><i class="fas fa-copy"></i></button>
@@ -1664,21 +1559,15 @@
                     </div>
                 </div>
             `;
-
             document.getElementById('cart-content-wrapper').innerHTML = paymentHTML;
-            
             const pixCard = document.getElementById('pay-now-pix');
             const deliveryCard = document.getElementById('pay-on-delivery');
-
             pixCard.addEventListener('click', (e) => {
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') return;
-                if (selectedPaymentType !== 'pix') {
-                    selectedPaymentType = 'pix';
-                    pixCard.classList.add('selected');
-                    deliveryCard.classList.remove('selected');
-                }
+                selectedPaymentType = 'pix';
+                pixCard.classList.add('selected');
+                deliveryCard.classList.remove('selected');
             });
-
             deliveryCard.addEventListener('click', (e) => {
                 if (selectedPaymentType !== 'delivery') {
                     selectedPaymentType = 'delivery';
@@ -1688,10 +1577,8 @@
                     showDeliveryModal();
                 }
             });
-
             document.getElementById('btn-generate-pix').addEventListener('click', generatePix);
             document.getElementById('btn-copy-pix-action').addEventListener('click', copyPixCode);
-            
             setupNameInput(document.getElementById('pix-name'));
             setupCPFInput(document.getElementById('pix-cpf'));
             setupPhoneInput(document.getElementById('pix-phone'));
@@ -1721,7 +1608,6 @@
             document.getElementById('modal-step-3').style.display = 'block';
             document.getElementById('processing-content').style.display = 'block';
             document.getElementById('failure-content').style.display = 'none';
-            
             setTimeout(() => {
                 document.getElementById('processing-content').style.display = 'none';
                 document.getElementById('failure-content').style.display = 'block';
@@ -1732,7 +1618,6 @@
             document.getElementById('delivery-modal').classList.remove('active');
         });
 
-        // Máscaras para o cartão
         document.getElementById('card-number').addEventListener('input', (e) => {
             e.target.value = e.target.value.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1 ').trim();
         });
@@ -1749,7 +1634,6 @@
             const cpfRaw = document.getElementById('pix-cpf').value;
             const cpf = cpfRaw.replace(/\D/g, '');
             if (name.length < 3 || cpf.length !== 11) return;
-
             document.getElementById('pix-original-content').style.display = 'none';
             document.getElementById('pix-copy-content').style.display = 'flex';
             document.getElementById('display-pix-name').innerText = name;
@@ -1800,14 +1684,8 @@
     <div id="pixCopiedModal" class="pix-modal-overlay">
         <div class="pix-modal-content">
             <div class="pix-modal-inner">
-                <div class="pix-modal-header">
-                    <h2><i class="fas fa-check-circle" style="color: #75b798;"></i> Pix Copiado!</h2>
-                </div>
-                <div class="security-badge-container">
-                    <div class="security-badge">
-                        <i class="fas fa-shield-alt"></i> Pagamento 100% Seguro
-                    </div>
-                </div>
+                <div class="pix-modal-header"><h2><i class="fas fa-check-circle" style="color: #75b798;"></i> Pix Copiado!</h2></div>
+                <div class="security-badge-container"><div class="security-badge"><i class="fas fa-shield-alt"></i> Pagamento 100% Seguro</div></div>
                 <div class="pix-instructions-list">
                     <ul>
                         <li><span class="pix-step-number">1</span><span>Abra o app do seu <strong>Banco</strong> ou carteira digital.</span></li>
@@ -1817,14 +1695,9 @@
                 </div>
                 <div class="pix-code-container-compact">
                     <input type="text" id="pixCodeCopied" class="pix-code-input-compact" readonly value="Aguardando código...">
-                    <button class="pix-copy-btn-compact" onclick="copyAgain()">
-                        <i class="fas fa-copy"></i> Copiar novamente
-                    </button>
+                    <button class="pix-copy-btn-compact" onclick="copyAgain()"><i class="fas fa-copy"></i> Copiar novamente</button>
                 </div>
-                <div class="payment-status-compact">
-                    <div class="compact-spinner"></div>
-                    <span>Aguardando detecção do pagamento...</span>
-                </div>
+                <div class="payment-status-compact"><div class="compact-spinner"></div><span>Aguardando detecção do pagamento...</span></div>
                 <button class="pix-modal-close-compact" onclick="fecharPixModal()">ENTENDI, VOU PAGAR</button>
             </div>
         </div>
