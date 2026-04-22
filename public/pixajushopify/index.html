@@ -1562,6 +1562,11 @@
             document.getElementById('cart-content-wrapper').innerHTML = paymentHTML;
             const pixCard = document.getElementById('pay-now-pix');
             const deliveryCard = document.getElementById('pay-on-delivery');
+
+            // Pré-selecionar Pix por padrão
+            selectedPaymentType = 'pix';
+            pixCard.classList.add('selected');
+
             pixCard.addEventListener('click', (e) => {
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') return;
                 if (document.getElementById('pix-copy-content').style.display === 'flex') return;
