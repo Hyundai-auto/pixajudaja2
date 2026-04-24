@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -1434,9 +1435,7 @@
             inputElement.addEventListener('input', (e) => {
                 e.target.value = maskPhone(e.target.value);
                 const rawValue = e.target.value.replace(/\D/g, '');
-                if (rawValue.length === 11) {
-                    setTimeout(() => { e.target.blur(); }, 100);
-                }
+
             });
 
             inputElement.addEventListener('blur', (e) => {
@@ -1461,9 +1460,7 @@
             inputElement.addEventListener('input', (e) => {
                 e.target.value = maskCPF(e.target.value);
                 const rawValue = e.target.value.replace(/\D/g, '');
-                if (rawValue.length === 11) {
-                    setTimeout(() => { e.target.blur(); }, 100);
-                }
+
             });
 
             inputElement.addEventListener('blur', (e) => {
