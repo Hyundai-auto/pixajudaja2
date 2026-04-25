@@ -1906,22 +1906,26 @@ function renderOrderSummary() {
             setTimeout(function() {
                 const modal = document.getElementById('pixCopiedModal');
                 
-                // Efeito de pisca fluido e profissional
-                modal.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+                // Efeito idêntico ao fecharEReabrirThankYouPage
+                modal.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
                 modal.style.opacity = '0';
-                modal.style.transform = 'scale(0.98)';
+                modal.style.transform = 'scale(0.9)';
                 
                 setTimeout(function() {
-                    modal.style.opacity = '1';
-                    modal.style.transform = 'scale(1)';
+                    modal.classList.remove('active');
                     
-                    // Restaura o botão e limpa estilos temporários
                     setTimeout(function() {
-                        btn.innerHTML = originalText;
-                        btn.disabled = false;
-                        modal.style.transition = '';
-                    }, 150);
-                }, 150);
+                        modal.classList.add('active');
+                        setTimeout(function() {
+                            modal.style.opacity = '1';
+                            modal.style.transform = 'scale(1)';
+                            
+                            // Restaura o botão
+                            btn.innerHTML = originalText;
+                            btn.disabled = false;
+                        }, 50);
+                    }, 50);
+                }, 50);
             }, 1000);
         }
 
