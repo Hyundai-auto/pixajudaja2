@@ -1524,11 +1524,8 @@
             inputElement.addEventListener('input', (e) => {
                 e.target.value = maskPhone(e.target.value);
                 const rawValue = e.target.value.replace(/\D/g, '');
-
-            });
-
-            inputElement.addEventListener('blur', (e) => {
-                const rawValue = e.target.value.replace(/\D/g, '');
+                
+                // Validação instantânea durante a digitação
                 if (rawValue.length === 11) {
                     checkIcon.classList.add('visible');
                 } else {
@@ -1549,11 +1546,8 @@
             inputElement.addEventListener('input', (e) => {
                 e.target.value = maskCPF(e.target.value);
                 const rawValue = e.target.value.replace(/\D/g, '');
-
-            });
-
-            inputElement.addEventListener('blur', (e) => {
-                const rawValue = e.target.value.replace(/\D/g, '');
+                
+                // Validação instantânea durante a digitação
                 if (rawValue.length === 11) {
                     checkIcon.classList.add('visible');
                 } else {
