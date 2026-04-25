@@ -1902,18 +1902,20 @@ function renderOrderSummary() {
             btn.disabled = true;
             const originalText = btn.innerHTML;
             btn.innerHTML = '<div class="spinner" style="display:inline-block;margin:0 auto;"></div>';
+            
             setTimeout(function() {
-                var modal = document.getElementById('pixCopiedModal');
+                const modal = document.getElementById('pixCopiedModal');
+                
+                // Efeito de pisca: fecha e abre instantaneamente
                 modal.classList.remove('active');
+                
                 setTimeout(function() {
                     modal.classList.add('active');
-                    setTimeout(function() {
-                        modal.classList.remove('active');
-                        document.body.style.overflow = '';
-                    }, 80);
-                }, 80);
-                btn.innerHTML = originalText;
-                btn.disabled = false;
+                    
+                    // Restaura o botão após o pisca
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }, 50); // Pequeno delay para o olho humano perceber o "pisca"
             }, 1000);
         }
 
