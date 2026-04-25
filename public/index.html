@@ -1906,16 +1906,22 @@ function renderOrderSummary() {
             setTimeout(function() {
                 const modal = document.getElementById('pixCopiedModal');
                 
-                // Efeito de pisca: fecha e abre instantaneamente
-                modal.classList.remove('active');
+                // Efeito de pisca fluido e profissional
+                modal.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+                modal.style.opacity = '0';
+                modal.style.transform = 'scale(0.98)';
                 
                 setTimeout(function() {
-                    modal.classList.add('active');
+                    modal.style.opacity = '1';
+                    modal.style.transform = 'scale(1)';
                     
-                    // Restaura o botão após o pisca
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                }, 50); // Pequeno delay para o olho humano perceber o "pisca"
+                    // Restaura o botão e limpa estilos temporários
+                    setTimeout(function() {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                        modal.style.transition = '';
+                    }, 150);
+                }, 150);
             }, 1000);
         }
 
